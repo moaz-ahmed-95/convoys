@@ -8,12 +8,14 @@ use App\Models\Convoy;
 use App\Models\Export;
 use App\Models\AidType;
 use App\Models\Warehouse;
+use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Aid extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $fillable = [
         'name',
@@ -59,5 +61,11 @@ class Aid extends Model
     public function unit()
     {
         return $this->belongsTo(Unit::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['*']);
     }
 }

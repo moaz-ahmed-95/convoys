@@ -5,12 +5,14 @@ namespace App\Models;
 use App\Models\Aid;
 use App\Models\User;
 use App\Models\Country;
+use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Convoy extends Model
 {
-    use HasFactory;
+    use HasFactory , LogsActivity;
 
     protected $casts = [
         'arrival_date' => 'datetime',
@@ -38,5 +40,11 @@ class Convoy extends Model
         static::creating(function ($convoy) {
             $convoy->user_id = auth()->user()->id;
         });
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['*']);
     }
 }

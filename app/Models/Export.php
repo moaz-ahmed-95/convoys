@@ -5,12 +5,14 @@ namespace App\Models;
 use App\Models\Aid;
 use App\Models\Unit;
 use App\Models\User;
+use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Export extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $casts = [
         'export_date' => 'datetime',
@@ -39,5 +41,11 @@ class Export extends Model
     public function unit()
     {
         return $this->belongsTo(Unit::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['*']);
     }
 }
