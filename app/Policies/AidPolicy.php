@@ -12,7 +12,9 @@ class AidPolicy
 
     public function before(User $user)
     {
-       return true;
+       if($user->hasRole('admin')){
+           return true;
+       }
     }
 
     /**
