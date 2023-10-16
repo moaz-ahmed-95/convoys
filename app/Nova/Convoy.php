@@ -124,4 +124,13 @@ class Convoy extends Resource
     {
         return __('قوافل الخير');
     }
+
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        if (auth()->user()->hasRole('admin')) {
+            return $query;
+        } else {
+            return $query->where('user_id', auth()->user()->id);
+        }
+    }
 }

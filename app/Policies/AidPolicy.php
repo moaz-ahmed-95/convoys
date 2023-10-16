@@ -12,7 +12,9 @@ class AidPolicy
 
     public function before(User $user)
     {
-        return true;
+        if ($user->hasRole('admin')) {
+            return true;
+        }
     }
 
     /**
@@ -23,7 +25,7 @@ class AidPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -35,7 +37,7 @@ class AidPolicy
      */
     public function view(User $user, Aid $aid)
     {
-        //
+        return $user->id === $aid->user_id;
     }
 
     /**
@@ -46,7 +48,7 @@ class AidPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -58,7 +60,7 @@ class AidPolicy
      */
     public function update(User $user, Aid $aid)
     {
-        //
+        return $user->id === $aid->user_id;
     }
 
     /**
@@ -70,7 +72,7 @@ class AidPolicy
      */
     public function delete(User $user, Aid $aid)
     {
-        //
+        return $user->id === $aid->user_id;
     }
 
     /**

@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 use Vyuldashev\NovaPermission\RoleSelect;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
 {
@@ -125,5 +126,21 @@ class User extends Resource
     public static function group()
     {
         return __('المستخدمين');
+    }
+
+    public static function availableForNavigation(Request $request)
+    {
+        if (auth()->user()->hasRole('admin')) {
+            return true;
+        }
+    }
+    
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        if (auth()->user()->hasRole('admin')) {
+            return $query;
+        } else {
+            return $query->where('id', auth()->user()->id);
+        }
     }
 }

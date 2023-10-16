@@ -12,7 +12,9 @@ class ConvoyPolicy
 
     public function before(User $user)
     {
-       return true;
+        if ($user->hasRole('admin')) {
+            return true;
+        }
     }
     /**
      * Determine whether the user can view any models.
@@ -22,7 +24,7 @@ class ConvoyPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -34,7 +36,7 @@ class ConvoyPolicy
      */
     public function view(User $user, Convoy $convoy)
     {
-        //
+        return $user->id === $convoy->user_id;
     }
 
     /**
@@ -45,7 +47,7 @@ class ConvoyPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -57,7 +59,7 @@ class ConvoyPolicy
      */
     public function update(User $user, Convoy $convoy)
     {
-        //
+        return $user->id === $convoy->user_id;
     }
 
     /**
@@ -69,7 +71,7 @@ class ConvoyPolicy
      */
     public function delete(User $user, Convoy $convoy)
     {
-        //
+        return $user->id === $convoy->user_id;
     }
 
     /**

@@ -109,4 +109,11 @@ class AidType extends Resource
     {
         return __('إعدادات عامة');
     }
+
+    public static function availableForNavigation(Request $request)
+    {
+        if (auth()->user()->hasRole('admin')) {
+            return true;
+        }
+    }
 }

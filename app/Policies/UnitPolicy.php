@@ -12,7 +12,9 @@ class UnitPolicy
 
     public function before(User $user)
     {
-        return true;
+        if ($user->hasRole('admin')) {
+            return true;
+        }
     }
 
     /**
@@ -23,7 +25,7 @@ class UnitPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**

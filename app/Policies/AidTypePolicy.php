@@ -12,7 +12,9 @@ class AidTypePolicy
 
     public function before(User $user)
     {
-       return true;
+        if ($user->hasRole('admin')) {
+            return true;
+        }
     }
 
     /**
@@ -23,7 +25,7 @@ class AidTypePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -35,7 +37,7 @@ class AidTypePolicy
      */
     public function view(User $user, AidType $aidType)
     {
-        //
+        // return true;
     }
 
     /**
