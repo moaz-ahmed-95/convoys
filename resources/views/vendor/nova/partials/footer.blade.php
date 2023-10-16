@@ -5,3 +5,5 @@
     <span class="px-1">&middot;</span>
     الإصدار <span class="px-1">1.0.0</span>
 </p>
+<nova-dark-theme-toggle></nova-dark-theme-toggle>
+<nova-dark-theme-toggle label="{{ __('Dark Theme') }}"></nova-dark-theme-toggle>
