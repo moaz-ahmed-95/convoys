@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('aids', function (Blueprint $table) {
+        Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('aid_type_id')->constrained();
-            $table->foreignId('convoy_id')->constrained();
-            $table->foreignId('warehouse_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->double('quantity' , 8 , 2);
-            $table->foreignId('unit_id')->constrained();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aids');
+        Schema::dropIfExists('units');
     }
 };

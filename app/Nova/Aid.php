@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Unit;
 use App\Nova\User;
 use App\Nova\Convoy;
 use App\Nova\Export;
@@ -10,6 +11,8 @@ use App\Nova\Warehouse;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -53,7 +56,8 @@ class Aid extends Resource
             BelongsTo::make('المستودع', 'warehouse', Warehouse::class)->sortable()->rules('required'),
             BelongsTo::make('المسؤل', 'user', User::class)->sortable()->rules('required')->exceptOnForms()->default(auth()->user()->id),
             BelongsTo::make('القافلة', 'convoy', Convoy::class)->sortable()->rules('required'),
-            Text::make('الكمية', 'quantity')->sortable()->rules('required', 'max:255'),
+            Number::make('الكمية', 'quantity')->sortable()->rules('required')->min(1),
+            BelongsTo::make('الوحدة', 'unit', Unit::class)->sortable()->rules('required'),
             HasMany::make('الصرفيات', 'exports', Export::class)->sortable()->rules('required'),
             
         ];
@@ -113,5 +117,11 @@ class Aid extends Resource
     public static function singularLabel()
     {
         return 'مساعدة';
+    }
+
+    // group
+    public static function group()
+    {
+        return __('قوافل الخير');
     }
 }

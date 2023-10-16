@@ -120,4 +120,10 @@ class User extends Resource
     {
         return 'مستخدم';
     }
+
+    // group
+    public static function group()
+    {
+        return __('المستخدمين');
+    }
 }

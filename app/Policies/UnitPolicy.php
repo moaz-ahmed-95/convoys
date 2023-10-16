@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Aid;
+use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class AidPolicy
+class UnitPolicy
 {
     use HandlesAuthorization;
 
@@ -30,10 +30,10 @@ class AidPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Aid  $aid
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Aid $aid)
+    public function view(User $user, Unit $unit)
     {
         //
     }
@@ -53,10 +53,10 @@ class AidPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Aid  $aid
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Aid $aid)
+    public function update(User $user, Unit $unit)
     {
         //
     }
@@ -65,10 +65,10 @@ class AidPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Aid  $aid
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Aid $aid)
+    public function delete(User $user, Unit $unit)
     {
         //
     }
@@ -77,10 +77,10 @@ class AidPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Aid  $aid
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Aid $aid)
+    public function restore(User $user, Unit $unit)
     {
         //
     }
@@ -89,10 +89,10 @@ class AidPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Aid  $aid
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Aid $aid)
+    public function forceDelete(User $user, Unit $unit)
     {
         //
     }

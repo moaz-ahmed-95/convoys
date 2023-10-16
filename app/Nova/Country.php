@@ -104,4 +104,10 @@ class Country extends Resource
     {
         return 'دولة';
     }
+
+    // group
+    public static function group()
+    {
+        return __('إعدادات عامة');
+    }
 }

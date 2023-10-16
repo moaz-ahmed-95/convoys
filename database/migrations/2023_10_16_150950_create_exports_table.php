@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('aid_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->string('quantity');
+            $table->double('quantity' , 8 , 2);
+            $table->foreignId('unit_id')->constrained();
             $table->date('export_date');
             $table->text('destination');
             $table->timestamps();

@@ -2,38 +2,26 @@
 
 namespace App\Nova;
 
-use App\Nova\Aid;
-use App\Nova\User;
-use App\Nova\Country;
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Convoy extends Resource
+class Unit extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Convoy::class;
+    public static $model = \App\Models\Unit::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    // public static $title = 'id';
-
-    // // title    
-    public  function title()
-    {
-        return $this->name . ' - ' . $this->country->name . ' - ' . $this->arrival_date;
-    }
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -54,12 +42,7 @@ class Convoy extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            BelongsTo::make('الدولة', 'country', Country::class)->sortable()->rules('required'),
             Text::make('الاسم', 'name')->sortable()->rules('required', 'max:255'),
-            Date::make('تاريخ الوصول', 'arrival_date')->sortable()->rules('required'),
-            BelongsTo::make('المسؤل', 'user', User::class)->sortable()->rules('required')->exceptOnForms()->default(auth()->user()->id),
-            HasMany::make('المساعدات', 'aids', Aid::class)->sortable()->rules('required'),
-
         ];
     }
 
@@ -110,18 +93,18 @@ class Convoy extends Resource
     // label
     public static function label()
     {
-        return 'القوافل';
+        return 'الوحدات';
     }
 
     // singular label
     public static function singularLabel()
     {
-        return 'قافلة';
+        return 'وحدة';
     }
 
     // group
     public static function group()
     {
-        return __('قوافل الخير');
+        return __('إعدادات عامة');
     }
 }

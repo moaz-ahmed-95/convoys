@@ -102,4 +102,10 @@ class Warehouse extends Resource
     {
         return 'مستودع';
     }
+
+    // group
+    public static function group()
+    {
+        return __('إعدادات عامة');
+    }
 }

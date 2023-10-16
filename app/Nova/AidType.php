@@ -103,4 +103,10 @@ class AidType extends Resource
     {
         return 'نوع مساعدة';
     }
+
+    // group
+    public static function group()
+    {
+        return __('إعدادات عامة');
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Unit;
 use App\Models\User;
 use App\Models\Convoy;
 use App\Models\Export;
@@ -53,5 +54,10 @@ class Aid extends Model
     public function exports()
     {
         return $this->hasMany(Export::class);
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
     }
 }

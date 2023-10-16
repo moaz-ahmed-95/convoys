@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Aid;
+use App\Models\Unit;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Export extends Model
 {
@@ -31,5 +34,10 @@ class Export extends Model
             $export->user_id = auth()->user()->id;
             $export->destination = 'غزة';
         });
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
     }
 }

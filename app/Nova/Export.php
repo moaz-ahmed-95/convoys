@@ -2,11 +2,12 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Export extends Resource
@@ -46,12 +47,13 @@ class Export extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             BelongsTo::make('المساعدة', 'aid', Aid::class)->sortable()->rules('required'),
             BelongsTo::make('المسؤل', 'user', User::class)->sortable()->rules('required')->exceptOnForms()->default(auth()->user()->id),
-            Text::make('الكمية', 'quantity')->sortable()->rules('required', 'max:255'),
+            Number::make('الكمية', 'quantity')->sortable()->rules('required')->min(1),
+            BelongsTo::make('الوحدة', 'unit', Unit::class)->sortable()->rules('required'),
             Date::make('تاريخ الصرف', 'export_date')->sortable()->rules('required'),
             Text::make('الوجهة', 'destination')->sortable()->rules('required', 'max:255')->default(function ($request) {
                 return 'غزة';
             })->readonly(),
-            
+
         ];
     }
 
@@ -109,5 +111,11 @@ class Export extends Resource
     public static function singularLabel()
     {
         return 'صرف مساعدة';
+    }
+
+    // group
+    public static function group()
+    {
+        return __('قوافل الخير');
     }
 }
