@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "89faaf295df368455fe244b8b5971119",
+    "content-hash": "f200def66142707eb4a4e6787ee396bd",
     "packages": [
         {
             "name": "brick/math",
@@ -2434,6 +2434,51 @@
                 }
             ],
             "time": "2023-08-05T12:09:49+00:00"
+        },
+        {
+            "name": "mastani/nova-password-reset",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mastani/nova-password-reset.git",
+                "reference": "8d1edd0f181f71e491870ab62cc0852e8ab24b87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mastani/nova-password-reset/zipball/8d1edd0f181f71e491870ab62cc0852e8ab24b87",
+                "reference": "8d1edd0f181f71e491870ab62cc0852e8ab24b87",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mastani\\NovaPasswordReset\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mastani\\NovaPasswordReset\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Reset your nova password easily from top navigation.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/mastani/nova-password-reset/issues",
+                "source": "https://github.com/mastani/nova-password-reset/tree/v1.2"
+            },
+            "time": "2022-04-26T14:12:40+00:00"
         },
         {
             "name": "monolog/monolog",

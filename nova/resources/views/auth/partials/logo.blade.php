@@ -1,1 +1,2 @@
-@include('nova::partials.logo', ['width' => '200', 'height' => '39'])
+<img src="{{ asset('assets/logo.png') }}" alt="قوافل الخير" style="margin: auto;
+width: 100%;"> 

@@ -1,0 +1,14 @@
+{
+    "Reset My Password": "إعادة تعيين كلمة المرور",
+    "Current password": "كلمة المرور الحالية",
+    "New password": "كلمة المرور الجديدة",
+    "Confirm password": "تأكيد كلمة المرور",
+    "Save Password": "حفظ كلمة المرور",
+    "Please correct the following error(s):": "يرجى تصحيح الأخطاء التالية:",
+    "novaPasswordReset.oldPasswordRequired": "كلمة المرور الحالية مطلوبة.",
+    "novaPasswordReset.newPasswordRequired": "كلمة المرور الجديدة مطلوبة.",
+    "novaPasswordReset.newPasswordSize": "كلمة المرور الجديدة يجب أن تكون أكبر من أو تساوي :minpass أحرف.",
+    "novaPasswordReset.confirmPasswordRequired": "تأكيد كلمة المرور الجديدة مطلوب.",
+    "novaPasswordReset.confirmPasswordSize": "تأكيد كلمة المرور الجديدة يجب أن تكون أكبر من أو تساوي :minpass أحرف.",
+    "novaPasswordReset.success": "تم تغيير كلمة المرور بنجاح!"
+}
