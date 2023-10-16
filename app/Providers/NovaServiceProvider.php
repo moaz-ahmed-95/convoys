@@ -4,10 +4,13 @@ namespace App\Providers;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
+use App\Nova\Metrics\TotalAid;
+use App\Nova\Metrics\TotalConvoy;
+use App\Nova\Metrics\TotalExport;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
-use Vyuldashev\NovaPermission\NovaPermissionTool;
 use Mastani\NovaPasswordReset\NovaPasswordReset;
+use Vyuldashev\NovaPermission\NovaPermissionTool;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -29,9 +32,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
     }
 
     /**
@@ -59,6 +62,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             // new Help,
+            new TotalConvoy,
+            new TotalAid,
+            new TotalExport,
         ];
     }
 
