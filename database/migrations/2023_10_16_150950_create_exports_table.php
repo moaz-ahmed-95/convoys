@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('unit_id')->constrained();
             $table->date('export_date');
             $table->text('destination');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->double('quantity' , 8 , 2);
             $table->foreignId('unit_id')->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

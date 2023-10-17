@@ -11,11 +11,12 @@ use App\Models\Warehouse;
 use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Aid extends Model
 {
-    use HasFactory, LogsActivity;
+    use HasFactory, LogsActivity ,SoftDeletes;
 
     protected $fillable = [
         'name',
